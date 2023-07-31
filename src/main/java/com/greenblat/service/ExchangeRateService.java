@@ -27,8 +27,8 @@ public class ExchangeRateService {
     public ExchangeRateService() {
         this.currencyMapper = new CurrencyMapper();
         this.exchangeRateMapper = new ExchangeRateMapper();
-        this.exchangeRateDAO = new ExchangeRateDAOImpl();
-        this.currencyDAO = new CurrencyDAOImpl();
+        this.exchangeRateDAO = ExchangeRateDAOImpl.getInstance();
+        this.currencyDAO = CurrencyDAOImpl.getInstance();
     }
 
     public List<ExchangeRateResponse> getAllExchangeRates() throws SQLException {

@@ -10,7 +10,6 @@ import com.greenblat.mapper.CurrencyMapper;
 
 import java.sql.SQLException;
 import java.util.List;
-import java.util.Optional;
 import java.util.stream.Collectors;
 
 public class CurrencyService {
@@ -20,7 +19,7 @@ public class CurrencyService {
 
     public CurrencyService() {
         this.currencyMapper = new CurrencyMapper();
-        this.currencyDAO = new CurrencyDAOImpl();
+        this.currencyDAO = CurrencyDAOImpl.getInstance();
     }
 
     public List<CurrencyDTO> getAllCurrencies() throws SQLException {

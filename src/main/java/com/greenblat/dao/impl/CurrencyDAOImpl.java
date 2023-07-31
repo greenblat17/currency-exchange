@@ -13,6 +13,11 @@ import java.util.Optional;
 
 public class CurrencyDAOImpl implements CurrencyDAO {
 
+    private static final CurrencyDAO INSTANCE = new CurrencyDAOImpl();
+
+    public static CurrencyDAO getInstance() {
+        return INSTANCE;
+    }
 
     @Override
     public List<Currency> findAll() throws SQLException {

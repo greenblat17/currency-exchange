@@ -1,8 +1,6 @@
 package com.greenblat.service;
 
-import com.greenblat.dao.CurrencyDAO;
 import com.greenblat.dao.ExchangeRateDAO;
-import com.greenblat.dao.impl.CurrencyDAOImpl;
 import com.greenblat.dao.impl.ExchangeRateDAOImpl;
 import com.greenblat.dto.CurrencyExchangeResponse;
 import com.greenblat.entity.Currency;
@@ -21,7 +19,6 @@ public class ExchangeService {
     private final ExchangeRateService exchangeRateService;
     private final CurrencyMapper currencyMapper;
     private final ExchangeRateDAO exchangeRateDAO;
-    private final CurrencyDAO currencyDAO;
 
     private static final String USD_CODE_KEY = "exchange_rate.code.usd";
     private static final String BIG_DECIMAL_SCALE_CODE = "exchange.big_decimal.scale";
@@ -29,8 +26,7 @@ public class ExchangeService {
     public ExchangeService() {
         this.exchangeRateService = new ExchangeRateService();
         this.currencyMapper = new CurrencyMapper();
-        this.exchangeRateDAO = new ExchangeRateDAOImpl();
-        this.currencyDAO = new CurrencyDAOImpl();
+        this.exchangeRateDAO = ExchangeRateDAOImpl.getInstance();
     }
 
     public CurrencyExchangeResponse getCurrencyExchange(String baseCurrencyCode,

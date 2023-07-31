@@ -13,6 +13,12 @@ import java.util.Optional;
 
 public class ExchangeRateDAOImpl implements ExchangeRateDAO {
 
+    private static final ExchangeRateDAO INSTANCE = new ExchangeRateDAOImpl();
+
+    public static ExchangeRateDAO getInstance() {
+        return INSTANCE;
+    }
+
     @Override
     public List<ExchangeRate> findAll() throws SQLException {
         var sql = """
@@ -143,7 +149,7 @@ public class ExchangeRateDAOImpl implements ExchangeRateDAO {
         }
     }
 
-    public ExchangeRate buildExchangeRate(ResultSet rs) throws SQLException {
+    private ExchangeRate buildExchangeRate(ResultSet rs) throws SQLException {
         return ExchangeRate.builder()
                 .id(rs.getInt("id"))
                 .baseCurrencyId(rs.getInt("base_currency_id"))
